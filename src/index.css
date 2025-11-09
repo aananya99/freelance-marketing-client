@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+  themes: light --default;
+ }
+ /* .navbar .active {
+  color: crimson;
+  font-weight: bold;
+
+  border-radius: 20px;
+
+} */
