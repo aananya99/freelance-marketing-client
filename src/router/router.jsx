@@ -39,6 +39,16 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:3000/allJobs/${params.id}`),
       },
       {
+        path: "/updateJob/:id",
+        element: (
+          <PrivateRoute>
+            <MyUpdatedJob></MyUpdatedJob>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/allJobs/${params.id}`),
+      },
+      {
         path: "/addJob",
         element: (
           <PrivateRoute>
@@ -54,14 +64,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/updateJob/:id",
-        element: (
-          <PrivateRoute>
-            <MyUpdatedJob></MyUpdatedJob>
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "/my-accepted-tasks",
         element: (
