@@ -8,6 +8,9 @@ import AllJobs from "../pages/AllJobs/AllJobs";
 import PrivateRoute from "./PrivateRoute";
 import JobDetails from "../pages/JobDetails/JobDetails";
 import AddJob from "../pages/AddJob/AddJob";
+import MyAcceptedTasks from "../pages/MyAcceptedTasks/MyAcceptedTasks";
+import MyAddedJobs from "../pages/MyAddedJobs/MyAddedJobs";
+import MyUpdatedJob from "../pages/MyUpdatedJob/MyUpdatedJob";
 
 export const router = createBrowserRouter([
   {
@@ -17,12 +20,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("http://localhost:3000/allJobs"),
       },
       {
         path: "/allJobs",
         element: <AllJobs></AllJobs>,
         loader: () => fetch("http://localhost:3000/allJobs"),
       },
+
       {
         path: "/allJobs/:id",
         element: (
@@ -38,6 +43,30 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddJob></AddJob>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myAddedJobs",
+        element: (
+          <PrivateRoute>
+            <MyAddedJobs></MyAddedJobs>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateJob/:id",
+        element: (
+          <PrivateRoute>
+            <MyUpdatedJob></MyUpdatedJob>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-accepted-tasks",
+        element: (
+          <PrivateRoute>
+            <MyAcceptedTasks></MyAcceptedTasks>
           </PrivateRoute>
         ),
       },
