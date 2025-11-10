@@ -1,11 +1,13 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import JobCard from "../../components/JobCard";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const MyAddedJobs = () => {
   const { user, loading } = use(AuthContext);
   const [addedJobs, setAddedJobs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.email) {
@@ -31,6 +33,40 @@ const MyAddedJobs = () => {
       </p>
     );
   }
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/allJobs/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            navigate('/allJobs')
+            Swal.fire({
+              title: "Deleted!",
+              text: "Selected Job has been deleted ",
+              icon: "success",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+  };
+
   return (
     <div className="w-11/12 mx-auto my-10">
       <h2 className="text-3xl font-bold text-center">
@@ -52,7 +88,12 @@ const MyAddedJobs = () => {
                 <Link to={`/updateJob/${job._id}`}>
                   <button className="btn btn-primary">Update </button>
                 </Link>
-                <button className="btn btn-primary">Delete </button>
+                <button
+                  onClick={() => handleDelete(job._id)}
+                  className="btn btn-primary"
+                >
+                  Delete{" "}
+                </button>
               </div>
             </div>
           </div>
