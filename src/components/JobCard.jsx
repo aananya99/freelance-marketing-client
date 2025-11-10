@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router";
 
 // JobCard.jsx
 // Tailwind-based card component that receives a `job` object as a prop
@@ -9,12 +10,12 @@ import React from 'react';
 export default function JobCard({ job }) {
   const {
     _id,
-    title = 'No title',
-    postedBy = 'Unknown',
-    category = 'General',
-    summary = '',
-    coverImage = '',
-    userEmail = ''
+    title = "No title",
+    postedBy = "Unknown",
+    category = "General",
+    summary = "",
+    coverImage = "",
+    // userEmail = ''
   } = job || {};
 
   return (
@@ -30,30 +31,27 @@ export default function JobCard({ job }) {
 
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">{category}</span>
-          
+          <span className="text-sm font-medium px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">
+            {category}
+          </span>
         </div>
 
-        <h3 className="text-lg font-semibold text-gray-900 leading-tight">{title}</h3>
-        <p className="text-sm text-gray-500 mt-1">Posted by <span className="font-medium text-gray-700">{postedBy}</span></p>
+        <h3 className="text-lg font-semibold text-gray-900 leading-tight">
+          {title}
+        </h3>
+        <p className="text-sm text-gray-500 mt-1">
+          Posted by{" "}
+          <span className="font-medium text-gray-700">{postedBy}</span>
+        </p>
 
         <p className="text-sm text-gray-600 mt-3 line-clamp-3">{summary}</p>
 
         <div className="mt-4 flex items-center justify-between">
-          <a
-            href={`mailto:${userEmail}`}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 transition"
-            aria-label={`Contact ${postedBy}`}
-          >
-            Contact
-          </a>
-
-          <button
-            onClick={() => alert('Apply clicked — hook this to your router or modal')}
-            className="px-3 py-2 text-sm font-medium rounded-lg border border-indigo-600 text-indigo-600 hover:bg-indigo-50 transition"
-          >
-            Apply
-          </button>
+          <Link to={`/allJobs/${_id}`}>
+            <button className="px-3 py-2 text-sm font-medium rounded-lg border border-indigo-600 text-indigo-600 hover:bg-indigo-50 transition">
+              View Details
+            </button>
+          </Link>
         </div>
       </div>
     </article>

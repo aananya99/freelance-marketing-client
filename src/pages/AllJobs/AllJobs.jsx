@@ -8,7 +8,7 @@ const AllJobs = () => {
 
   return <div>
     <div>
-        All jobs Section
+       <h2 className="text-3xl font-semibold text-center my-10">All Jobs </h2>
     </div>
     <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
  {

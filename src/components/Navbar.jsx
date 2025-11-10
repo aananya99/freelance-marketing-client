@@ -45,10 +45,13 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/all-jobs">All Jobs</NavLink>
+              <NavLink to="/allJobs">All Jobs</NavLink>
             </li>
             <li>
-              <NavLink to="/">Add a Job</NavLink>
+              <NavLink to="/addJob">Add a Job</NavLink>
+            </li>
+            <li>
+              <NavLink to="/">My Accepted Tasks</NavLink>
             </li>
           </ul>
         </div>
@@ -59,8 +62,9 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <div className="flex justify-between gap-2 items-center">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/all-jobs">All Jobs</NavLink>
-          <NavLink to="/">Add a Job</NavLink>
+          <NavLink to="/allJobs">All Jobs</NavLink>
+          <NavLink to="/addJob">Add a Job</NavLink>
+          <NavLink to="/">My Accepted Tasks</NavLink>
         </div>
       </div>
 
@@ -89,19 +93,8 @@ const Navbar = () => {
             >
               <div className=" pb-3 border-b border-b-gray-200">
                 <li className="text-sm font-bold">{user.displayName}</li>
-                <li className="text-xs">{user.email}</li>
               </div>
-              {/* <li className="mt-3">
-                <Link to={"/profile"}>
-                  <FaUser /> Profile
-                </Link>
-              </li> */}
-              <li>
-                <Link to={"/my-models"}>My Accepted Task</Link>
-              </li>
-              <li>
-                <Link to={"/my-downloads"}>My Downloads</Link>
-              </li>
+
               {/* <input
            onChange={(e)=> handleTheme(e.target.checked)} */}
               {/* type="checkbox" defaultChecked=
@@ -124,13 +117,22 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <Link
-            to={"/auth/login"}
-            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
-          >
-            {" "}
-            <IoLogIn /> Login
-          </Link>
+          <div>
+            <Link
+              to={"/auth/login"}
+              className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+            >
+              {" "}
+              <IoLogIn /> Login
+            </Link>
+            <Link
+              to={"/auth/register"}
+              className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+            >
+              {" "}
+              <IoLogIn /> Register
+            </Link>
+          </div>
         )}
       </div>
     </div>
