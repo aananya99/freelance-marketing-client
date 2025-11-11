@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
@@ -25,6 +25,18 @@ const Navbar = () => {
     </>
   );
   const { user, signOutUser } = use(AuthContext);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleChangeTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
+
   const handleLogOut = () => {
     console.log("log out");
     // func call
@@ -36,6 +48,7 @@ const Navbar = () => {
         console.log(error);
       });
   };
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -72,6 +85,13 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end gap-3">
+        {/* theme change*/}
+        <input
+          onChange={(e) => handleChangeTheme(e.target.checked)}
+          type="checkbox"
+          defaultChecked={localStorage.getItem("theme")}
+          className="toggle"
+        />
         {user ? (
           <div className="flex justify-between items-center gap-2">
             <div className="w-9 relative group cursor-pointer">
