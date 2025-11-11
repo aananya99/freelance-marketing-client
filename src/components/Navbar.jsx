@@ -5,6 +5,25 @@ import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 
 const Navbar = () => {
+  const links = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/allJobs">All Jobs</NavLink>
+      </li>
+      <li>
+        <NavLink to="/addJob">Add a Job</NavLink>
+      </li>
+      <li>
+        <NavLink to="/myAddedJobs">My Added Jobs</NavLink>
+      </li>
+      <li>
+        <NavLink to="/my-accepted-tasks">My Accepted Tasks</NavLink>
+      </li>
+    </>
+  );
   const { user, signOutUser } = use(AuthContext);
   const handleLogOut = () => {
     console.log("log out");
@@ -41,21 +60,7 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/allJobs">All Jobs</NavLink>
-            </li>
-            <li>
-              <NavLink to="/addJob">Add a Job</NavLink>
-            </li>
-            <li>
-              <NavLink to="/myAddedJobs">My Added Jobs</NavLink>
-            </li>
-            <li>
-              <NavLink to="/my-accepted-tasks">My Accepted Tasks</NavLink>
-            </li>
+            {links}
           </ul>
         </div>
 
@@ -63,61 +68,43 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <div className="flex justify-between gap-2 items-center">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/allJobs">All Jobs</NavLink>
-          <NavLink to="/addJob">Add a Job</NavLink>
-          <NavLink to="/my-accepted-tasks">My Accepted Tasks</NavLink>
-        </div>
+        <div className="flex justify-between gap-2 items-center">{links}</div>
       </div>
 
       <div className="navbar-end gap-3">
         {user ? (
-          <div className="dropdown dropdown-end z-50">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-9 border-2 border-gray-300 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  referrerPolicy="no-referrer"
-                  src={
-                    user.photoURL ||
-                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  }
-                />
+          <div className="flex justify-between items-center gap-2">
+            <div className="w-9 relative group cursor-pointer">
+              <img
+                alt="Tailwind CSS Navbar component"
+                referrerPolicy="no-referrer"
+                src={
+                  user.photoURL ||
+                  "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                }
+                className="rounded-full w-full h-full object-cover "
+              />
+              <div
+                className="
+        absolute left-1/2 -bottom-8
+        -translate-x-1/2
+        bg-black text-white text-xs px-2 py-1 rounded-md
+        opacity-0 group-hover:opacity-100
+        transition-all duration-200
+        whitespace-nowrap
+        pointer-events-none
+      "
+              >
+                {user.displayName || "User Name"}
               </div>
             </div>
-            <ul
-              tabIndex="-1"
-              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
-            >
-              <div className=" pb-3 border-b border-b-gray-200">
-                <li className="text-sm font-bold">{user.displayName}</li>
-              </div>
 
-              {/* <input
-           onChange={(e)=> handleTheme(e.target.checked)} */}
-              {/* type="checkbox" defaultChecked=
-              {localStorage.getItem("theme") === "dark"}
-              className="toggle"/> */}
-              {/* <li>
-                <a>
-                  {" "}
-                  <FaGear /> Settings
-                </a>
-              </li> */}
-              <li>
-                <button
-                  onClick={handleLogOut}
-                  className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
-                >
-                  <IoLogOut /> Logout
-                </button>
-              </li>
-            </ul>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
+            >
+              <IoLogOut /> Logout
+            </button>
           </div>
         ) : (
           <div>
@@ -143,3 +130,38 @@ const Navbar = () => {
 };
 
 export default Navbar;
+// <div className="dropdown dropdown-end z-50">
+//   <div
+//     tabIndex={0}
+//     role="button"
+//     className="btn btn-ghost btn-circle avatar"
+//   >
+//     <div className="w-9 border-2 border-gray-300 rounded-full">
+//       <img
+//         alt="Tailwind CSS Navbar component"
+//         referrerPolicy="no-referrer"
+//         src={
+//           user.photoURL ||
+//           "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+//         }
+//       />
+//     </div>
+//   </div>
+//   <ul
+//     tabIndex="-1"
+//     className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+//   >
+//     <div className=" pb-3 border-b border-b-gray-200">
+//       <li className="text-sm font-bold">{user.displayName}</li>
+//     </div>
+
+//     <li>
+//       <button
+//         onClick={handleLogOut}
+//         className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
+//       >
+//         <IoLogOut /> Logout
+//       </button>
+//     </li>
+//   </ul>
+// </div>
