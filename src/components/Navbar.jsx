@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
-import { FaUser } from "react-icons/fa6";
+import { SiGoogletasks } from "react-icons/si";
 
 const Navbar = () => {
   const links = (
@@ -73,15 +73,50 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            {links}
+            {user ? (
+              <div className="flex flex-col gap-2">{links}</div>
+            ) : (
+              <div className="flex flex-col  gap-2">
+                <li>
+                  <NavLink to="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/allJobs">All Jobs</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/addJob">Add a Job</NavLink>
+                </li>
+              </div>
+            )}
           </ul>
         </div>
-
-        <a className="btn btn-ghost text-xl">Task Bridge</a>
+        <div className="flex justify-between gap-1 items-center">
+          <SiGoogletasks size={24} />
+          <p className="text-xl font-bold">
+            {" "}
+            <span className="text-[#AD49E1]">Task </span>Bridge
+          </p>
+        </div>
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <div className="flex justify-between gap-2 items-center">{links}</div>
+        <div className="flex justify-between gap-2 items-center ">
+          {user ? (
+            <div className="flex justify-between gap-2">{links}</div>
+          ) : (
+            <div className="flex justify-between gap-2">
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/allJobs">All Jobs</NavLink>
+              </li>
+              <li>
+                <NavLink to="/addJob">Add a Job</NavLink>
+              </li>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="navbar-end gap-3">
@@ -121,7 +156,7 @@ const Navbar = () => {
 
             <button
               onClick={handleLogOut}
-              className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
+              className="btn  rounded-full text-center bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
             >
               <IoLogOut /> Logout
             </button>
@@ -130,14 +165,14 @@ const Navbar = () => {
           <div>
             <Link
               to={"/auth/login"}
-              className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+              className="btn rounded-full text-center bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
             >
               {" "}
               <IoLogIn /> Login
             </Link>
             <Link
               to={"/auth/register"}
-              className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+              className="btn rounded-full text-center bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
             >
               {" "}
               <IoLogIn /> Register
@@ -150,38 +185,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-// <div className="dropdown dropdown-end z-50">
-//   <div
-//     tabIndex={0}
-//     role="button"
-//     className="btn btn-ghost btn-circle avatar"
-//   >
-//     <div className="w-9 border-2 border-gray-300 rounded-full">
-//       <img
-//         alt="Tailwind CSS Navbar component"
-//         referrerPolicy="no-referrer"
-//         src={
-//           user.photoURL ||
-//           "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-//         }
-//       />
-//     </div>
-//   </div>
-//   <ul
-//     tabIndex="-1"
-//     className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
-//   >
-//     <div className=" pb-3 border-b border-b-gray-200">
-//       <li className="text-sm font-bold">{user.displayName}</li>
-//     </div>
-
-//     <li>
-//       <button
-//         onClick={handleLogOut}
-//         className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
-//       >
-//         <IoLogOut /> Logout
-//       </button>
-//     </li>
-//   </ul>
-// </div>

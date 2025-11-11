@@ -1,22 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
 }
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-
 body {
   font-family: "Inter", sans-serif;
 }
-h1, h2 {
+h1,
+h2 {
   font-family: "Manrope", sans-serif;
 }
 .navbar {
   list-style: none;
 }
-.navbar .active {
-  color: crimson;
-  font-weight: bold;
-  border-radius: 20px;
+.active {
+  color: #ad49e1;
+  text-decoration: underline;
+font-style: italic;
 }
