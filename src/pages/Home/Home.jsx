@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Home = () => {
   const data = useLoaderData();
-  console.log(data);
+ 
   return (
     <div>
       <Banner></Banner>

@@ -3,10 +3,9 @@
   themes: light --default, dark --prefersdark;
   themes: light --default;
  }
- /* .navbar .active {
+ .navbar .active {
   color: crimson;
   font-weight: bold;
-
   border-radius: 20px;
 
-} */
+}

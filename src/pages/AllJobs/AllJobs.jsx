@@ -4,7 +4,7 @@ import JobCard from "../../components/JobCard";
 
 const AllJobs = () => {
   const data = useLoaderData();
-  console.log(data);
+
 
   return <div className="w-11/12 mx-auto my-10">
     <div>

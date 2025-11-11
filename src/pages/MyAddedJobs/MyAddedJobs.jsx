@@ -1,24 +1,28 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import JobCard from "../../components/JobCard";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 
 const MyAddedJobs = () => {
-  const { user, loading } = use(AuthContext);
+  const { user, loading } = useAuth();
   const [addedJobs, setAddedJobs] = useState([]);
   const navigate = useNavigate();
+  const axiosInstance = useAxios();
 
+// axiosInstance
   useEffect(() => {
-    if (user?.email) {
-      fetch(`http://localhost:3000/myAddedjobs?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setAddedJobs(data);
-        });
-    }
-  }, [user?.email]);
+    if (!user?.email) return;
+    axiosInstance
+      .get(`/myAddedjobs?email=${user.email}`)
+      .then((data) => {
+        console.log("after axios get ", data.data);
+        setAddedJobs(data.data);
+      })
+      .catch((err) => console.log(err));
+  }, [user?.email, axiosInstance]);
 
   if (loading) {
     return (
@@ -44,16 +48,11 @@ const MyAddedJobs = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/allJobs/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((res) => res.json())
+        axiosInstance
+          .delete(`/allJobs/${id}`)
           .then((data) => {
-            console.log(data);
-            navigate('/allJobs')
+            console.log(data.data);
+            navigate("/allJobs");
             Swal.fire({
               title: "Deleted!",
               text: "Selected Job has been deleted ",
@@ -72,9 +71,12 @@ const MyAddedJobs = () => {
       <h2 className="text-3xl font-bold text-center">
         My Added jobs: {addedJobs.length}{" "}
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5 my-10">
         {addedJobs.map((job) => (
-          <div className="card bg-base-100 image-full w-full shadow-sm ">
+          <div
+            key={job._id}
+            className="card bg-base-100 image-full w-full shadow-sm "
+          >
             <figure>
               <img src={job.coverImage} />
             </figure>

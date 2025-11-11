@@ -1,10 +1,14 @@
-import React, { use } from "react";
+import React from "react";
 import { AuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
+import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 
 const AddJob = () => {
-  const { user } = use(AuthContext);
+  // const { user } = use(AuthContext);
+  const { user } = useAuth();
+  const axiosInstance = useAxios();
   const navigate = useNavigate();
 
   const handleAddJob = (e) => {
@@ -19,26 +23,23 @@ const AddJob = () => {
       userEmail: user.email,
       postedDate: new Date(),
     };
-    fetch("http://localhost:3000/allJobs/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
+
+    axiosInstance
+      .post("/alljobs", formData)
       .then((data) => {
         toast.success("Successfully added!");
-        console.log(data);
-        navigate("/alljobs");
+        console.log(data.data);
+        navigate("/myAddedJobs");
       })
       .catch((err) => {
         console.log(err);
       });
+
   };
   return (
     <div className="w-11/12 mx-auto my-5">
       <h2 className="text-3xl font-bold text-center mb-2">Add a Job </h2>
+
       <div className="card bg-base-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
         <div className="card-body">
           <form onSubmit={handleAddJob}>
