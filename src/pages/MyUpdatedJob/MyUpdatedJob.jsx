@@ -33,7 +33,7 @@ const MyUpdatedJob = () => {
 
   return (
     <div className="w-11/12 mx-auto my-5">
-      <h2 className="text-3xl text-center font-bold mb-2">Update Options</h2>
+      <h2 className="text-3xl text-center font-bold mb-2">Job <span className="text-[#AD49E1]">Update</span></h2>
       <div className="card bg-base-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
         <div className="card-body">
           <form onSubmit={handleJobUpdate}>
@@ -89,7 +89,8 @@ const MyUpdatedJob = () => {
                 className="input rounded-full focus:border-0 focus:outline-gray-200"
                 placeholder="coverImage"
               />
-              <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-pink-500 to-red-600">
+              <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-[#7A1CAC] to-[#AD49E1]
+ ">
                 Update
               </button>
             </fieldset>

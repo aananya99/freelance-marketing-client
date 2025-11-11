@@ -69,7 +69,7 @@ const MyAddedJobs = () => {
   return (
     <div className="w-11/12 mx-auto my-10">
       <h2 className="text-3xl font-bold text-center">
-        My Added jobs: {addedJobs.length}{" "}
+        My <span className="text-[#AD49E1]">Added jobs:</span> {addedJobs.length}{" "}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5 my-10">
         {addedJobs.map((job) => (
@@ -88,11 +88,11 @@ const MyAddedJobs = () => {
               </p>
               <div className="card-actions justify-between">
                 <Link to={`/updateJob/${job._id}`}>
-                  <button className="btn btn-primary">Update </button>
+                  <button className="btn  bg-[#7A1CAC] hover:bg-[#AD49E1] text-white">Update </button>
                 </Link>
                 <button
                   onClick={() => handleDelete(job._id)}
-                  className="btn btn-primary"
+                  className="btn bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
                 >
                   Delete{" "}
                 </button>
