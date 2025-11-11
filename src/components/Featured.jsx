@@ -2,13 +2,13 @@ import React from "react";
 import { FaRocket, FaShieldAlt, FaClock, FaUsers } from "react-icons/fa";
 const Featured = () => {
   return (
-    <div className="w-11/12 mx-auto my-10 space-y-5">
+    <div className="w-full mx-auto my-10 space-y-5 ">
       <div className="flex flex-col gap-4 items-center">
         <h2 className="text-3xl font-bold">
-          Learn, Grow & Connect with TaskBridge
+          Learn, Grow & Connect with <span className="text-[#AD49E1]">TaskBridge</span>
         </h2>
-        {/* <p>TaskBridge helps job seekers and employers connect seamlessly, offering verified employers, flexible jobs, and expert support.</p> */}
       </div>
+
       {/* why choose  */}
 
       <div className="flex flex-col space-y-2 items-left">
@@ -21,9 +21,9 @@ const Featured = () => {
       </div>
 
       <div className="grid  grid-cols-2 md:grid-cols-4 gap-5">
-        <div className="card w-full bg-base-100 card-sm shadow-sm">
-          <div className="card-body">
-            <FaRocket size={30} className="text-blue-500"></FaRocket>
+        <div className="card w-full  card-sm shadow-sm">
+          <div className="card-body ">
+            <FaRocket size={30} className="text-[#AD49E1]"></FaRocket>
             <h2 className="card-title">Fast Hiring</h2>
             <p>
               Find your ideal job quickly with our streamlined platform. Apply
@@ -31,9 +31,9 @@ const Featured = () => {
             </p>
           </div>
         </div>
-        <div className="card w-full bg-base-100 card-sm shadow-sm">
+        <div className="card w-full card-sm shadow-sm">
           <div className="card-body">
-            <FaShieldAlt size={30} className="text-blue-500"></FaShieldAlt>
+            <FaShieldAlt size={30} className="text-[#AD49E1]"></FaShieldAlt>
             <h2 className="card-title">Verified Employers</h2>
             <p>
               All our listed companies are verified to ensure you work with
@@ -41,9 +41,9 @@ const Featured = () => {
             </p>
           </div>
         </div>
-        <div className="card w-full bg-base-100 card-sm shadow-sm">
+        <div className="card w-full  card-sm shadow-sm">
           <div className="card-body">
-            <FaClock size={30} className="text-blue-500"></FaClock>
+            <FaClock size={30} className="text-[#AD49E1]"></FaClock>
             <h2 className="card-title">Flexible Jobs</h2>
             <p>
               Explore jobs that fit your schedule and lifestyle, whether
@@ -51,9 +51,9 @@ const Featured = () => {
             </p>
           </div>
         </div>
-        <div className="card w-full bg-base-100 card-sm shadow-sm">
+        <div className="card w-full  card-sm ">
           <div className="card-body">
-            <FaUsers size={30} className="text-blue-500"></FaUsers>
+            <FaUsers size={30} className="text-[#AD49E1]"></FaUsers>
             <h2 className="card-title">Expert Support</h2>
             <p>
               Our team is always ready to guide you through every step, making
@@ -62,11 +62,11 @@ const Featured = () => {
           </div>
         </div>
       </div>
-      {/*people  */}
+    {/* people */}
       <div className="grid grid-cols-1 lg:grid-cols-12 ">
-        {/* child 1 */}
+       
         <div className="col-span-7">
-          <div className="flex flex-col space-y-2 items-left">
+          <div className="flex flex-col space-y-2 items-left mt-5">
             <h2 className="text-xl font-semibold">
               People Love Working with TaskBridge
             </h2>
@@ -75,27 +75,27 @@ const Featured = () => {
               for a smooth and reliable experience.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 my-5">
             <div className="flex flex-col items-center">
               <h3 className="text-2xl font-semibold">4.9/5</h3>
-              <p className="text-gray-700">
+              <p>
                 Clients rate professionals on TaskBridge
               </p>
             </div>
             <div className="flex flex-col items-center">
               <h3 className="text-2xl font-semibold">90%</h3>
-              <p className="text-gray-700">
+              <p>
                 90% of customers are satisfied with their hiring experience.{" "}
               </p>
             </div>
             <div className="flex flex-col items-center">
               <h3 className="text-2xl font-semibold">Award Winner</h3>
-              <p className="text-gray-700">G2’s 2025 Best Software Awards</p>
+              <p>G2’s 2025 Best Software Awards</p>
             </div>
           </div>
         </div>
         <div className="col-span-5 ">
-          <div className="card bg-base-100 w-full shadow-sm">
+          <div className="card bg-base-100 w-full shadow-sm border border-[#AD49E1] mt-5">
             <div className="card-body">
               <h2 className="card-title">Great Work</h2>
               <p>

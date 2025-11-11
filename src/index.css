@@ -19,5 +19,6 @@ h2 {
 .active {
   color: #ad49e1;
   text-decoration: underline;
-font-style: italic;
+  font-style: italic;
+  font-weight: bold;
 }

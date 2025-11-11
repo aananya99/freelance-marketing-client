@@ -19,7 +19,7 @@ const JobDetails = () => {
         <div className="lg:w-1/2 space-y-4">
           <h1 className="text-3xl lg:text-4xl font-bold">{title}</h1>
 
-          <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+          <span className="inline-block bg-[#EBD3F8] text-[#AD49E1] font-semibold px-3 py-1 rounded-full text-sm ">
             {category}
           </span>
 
@@ -32,7 +32,7 @@ const JobDetails = () => {
 
           <p className="text-gray-700 text-base leading-relaxed">{summary}</p>
        <Link to="/my-accepted-tasks">
-            <button className="btn btn-primary mt-3">Accept</button>
+            <button className="btn  mt-3 bg-[#7A1CAC] hover:bg-[#AD49E1] text-white">Accept</button>
           </Link>
         </div>
       </div>
