@@ -5,8 +5,8 @@ import marketingImg from "../assets/marketing.png";
 
 const TopCategories = () => {
   return (
-    <div className="w-11/12 mx-auto my-10 space-y-5">
-      <h2 className="text-3xl font-bold text-center">
+    <div className="w-11/12 mx-auto my-20 space-y-5">
+      <h2 className="text-3xl font-bold text-center mb-5">
         Top <span className="text-[#AD49E1]">Categories</span>{" "}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

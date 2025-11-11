@@ -2,7 +2,6 @@ import React from "react";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { FaSquareEnvelope } from "react-icons/fa6";
 import { SiGoogletasks } from "react-icons/si";
 const Footer = () => {
   return (

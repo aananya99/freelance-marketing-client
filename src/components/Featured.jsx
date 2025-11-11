@@ -2,7 +2,7 @@ import React from "react";
 import { FaRocket, FaShieldAlt, FaClock, FaUsers } from "react-icons/fa";
 const Featured = () => {
   return (
-    <div className="w-full mx-auto my-10 space-y-5 ">
+    <div className="w-full mx-auto my-20 space-y-5 ">
       <div className="flex flex-col gap-4 items-center">
         <h2 className="text-3xl font-bold">
           Learn, Grow & Connect with <span className="text-[#AD49E1]">TaskBridge</span>
