@@ -27,7 +27,7 @@ const AddJob = () => {
     axiosInstance
       .post("/alljobs", formData)
       .then((data) => {
-        toast.success("Successfully added!");
+        toast.success("Successfully added a Job!");
         console.log(data.data);
         navigate("/myAddedJobs");
       })
