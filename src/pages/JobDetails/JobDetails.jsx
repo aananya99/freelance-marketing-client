@@ -23,14 +23,14 @@ const JobDetails = () => {
             {category}
           </span>
 
-          <p className="text-gray-500 text-sm">
-            Posted By: <span className="font-semibold">{postedBy}</span> | Date:{" "}
+          <p className="text-white text-sm">
+            Posted By: <span className="font-lg font-semibold">{postedBy}</span> | Date:{" "}
             <span className="font-semibold">
               {new Date(postedDate).toLocaleDateString()}
             </span>
           </p>
 
-          <p className="text-gray-700 text-base leading-relaxed">{summary}</p>
+          <p className="text-white text-base leading-relaxed">{summary}</p>
        <Link to="/my-accepted-tasks">
             <button className="btn  mt-3 bg-[#7A1CAC] hover:bg-[#AD49E1] text-white">Accept</button>
           </Link>

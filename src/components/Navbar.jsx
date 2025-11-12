@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { SiGoogletasks } from "react-icons/si";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const links = (
@@ -37,17 +38,31 @@ const Navbar = () => {
     setTheme(checked ? "dark" : "light");
   };
 
-  const handleLogOut = () => {
-    console.log("log out");
-    // func call
-    signOutUser()
-      .then(() => {
-        alert("User logged out successfully");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+const handleLogOut = () => {
+  Swal.fire({
+    title: "Are you sure you want to log out?",
+    text: "You’ll need to sign in again to access your account.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, log out!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      signOutUser()
+        .then(() => {
+          Swal.fire({
+            title: "Logged out!",
+            text: "You have successfully logged out.",
+            icon: "success",
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  });
+};
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -156,7 +171,7 @@ const Navbar = () => {
 
             <button
               onClick={handleLogOut}
-              className="btn  rounded-full text-center bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
+              className="btn  rounded-full text-center  text-white bg-[#7A1CAC] hover:bg-[#AD49E1]"
             >
               <IoLogOut /> Logout
             </button>

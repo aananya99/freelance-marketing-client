@@ -1,8 +1,7 @@
 import React, { use } from "react";
-import { FaGoogle } from "react-icons/fa";
 import { Link, Navigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-
+import { FcGoogle } from "react-icons/fc";
 const Login = () => {
   const { signInUser, signInWithGoogle } = use(AuthContext);
 
@@ -31,9 +30,9 @@ const Login = () => {
       });
   };
   return (
-    <div className="card bg-base-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
-      <div className="card-body">
-        <h1 className="text-3xl font-bold text-center">Login</h1>
+    <div className="card bg-base-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200 my-10">
+      <div className="card-body ">
+        <h1 className="text-3xl font-bold text-center ">Log<span className="text-[#AD49E1]">in</span></h1>
         <form onSubmit={handleLogIn}>
           <fieldset className="fieldset">
             <label className="label">Email</label>
@@ -54,7 +53,7 @@ const Login = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-pink-500 to-red-600">
+            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-[#7A1CAC] to-[#AD49E1]">
               Login
             </button>
           </fieldset>
@@ -64,13 +63,13 @@ const Login = () => {
           onClick={handleGoogleSignIn}
           className="btn bg-white rounded-full text-black border-[#e5e5e5]"
         >
-          <FaGoogle />
+         <FcGoogle size={24}/>
           Login with Google
         </button>
         <p className="text-center">
           New to our website? Please{" "}
           <Link
-            className="text-blue-500 hover:text-blue-800"
+            className="text-[#AD49E1] hover:text-lg hover:underline"
             to="/auth/register"
           >
             Register
