@@ -38,31 +38,31 @@ const Navbar = () => {
     setTheme(checked ? "dark" : "light");
   };
 
-const handleLogOut = () => {
-  Swal.fire({
-    title: "Are you sure you want to log out?",
-    text: "You’ll need to sign in again to access your account.",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, log out!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      signOutUser()
-        .then(() => {
-          Swal.fire({
-            title: "Logged out!",
-            text: "You have successfully logged out.",
-            icon: "success",
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure you want to log out?",
+      text: "You’ll need to sign in again to access your account.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOutUser()
+          .then(() => {
+            Swal.fire({
+              title: "Logged out!",
+              text: "You have successfully logged out.",
+              icon: "success",
+            });
+          })
+          .catch((error) => {
+            console.log(error);
           });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  });
-};
+      }
+    });
+  };
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -115,9 +115,9 @@ const handleLogOut = () => {
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <div className="flex justify-between gap-2 items-center ">
+        <div className="flex justify-between gap-5 items-center ">
           {user ? (
-            <div className="flex justify-between gap-2">{links}</div>
+            <div className="flex justify-between gap-10">{links}</div>
           ) : (
             <div className="flex justify-between gap-2">
               <li>

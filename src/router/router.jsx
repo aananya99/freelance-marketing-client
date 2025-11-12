@@ -65,7 +65,6 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-
       {
         path: "/my-accepted-tasks",
         element: (
@@ -74,6 +73,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/auth/login",
         element: <Login></Login>,

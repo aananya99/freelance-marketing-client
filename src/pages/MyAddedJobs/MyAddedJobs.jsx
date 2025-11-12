@@ -5,9 +5,10 @@ import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
+import Loading from "../../components/Loading";
 
 const MyAddedJobs = () => {
-  const { user, loading } = useAuth();
+  const { user} = useAuth();
   const [addedJobs, setAddedJobs] = useState([]);
   const navigate = useNavigate();
   const axiosInstance = useAxios();
@@ -18,17 +19,11 @@ const MyAddedJobs = () => {
     axiosInstance
       .get(`/myAddedjobs?email=${user.email}`)
       .then((data) => {
-        console.log("after axios get ", data.data);
         setAddedJobs(data.data);
       })
       .catch((err) => console.log(err));
   }, [user?.email, axiosInstance]);
 
-  if (loading) {
-    return (
-      <p className="text-center text-xl font-semibold mt-10">Loading...</p>
-    );
-  }
 
   if (addedJobs.length === 0) {
     return (

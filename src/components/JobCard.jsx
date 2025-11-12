@@ -37,9 +37,7 @@ export default function JobCard({ job }) {
           <span className="font-medium text-gray-700">{postedBy}</span>
         </p>
 
-        <p className="text-sm text-gray-600 mt-3 line-clamp-1">
-          {summary}
-        </p>
+        <p className="text-sm text-gray-600 mt-3 line-clamp-1">{summary}</p>
 
         <div className="mt-4 flex items-center justify-between">
           <Link to={`/allJobs/${_id}`}>
@@ -52,4 +50,3 @@ export default function JobCard({ job }) {
     </article>
   );
 }
-

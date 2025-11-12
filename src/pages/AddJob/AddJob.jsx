@@ -1,9 +1,9 @@
 import React from "react";
 import { AuthContext } from "../../context/AuthContext";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
+import toast from "react-hot-toast";
 
 const AddJob = () => {
   // const { user } = use(AuthContext);
