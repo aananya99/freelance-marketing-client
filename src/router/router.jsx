@@ -11,6 +11,7 @@ import AddJob from "../pages/AddJob/AddJob";
 import MyAcceptedTasks from "../pages/MyAcceptedTasks/MyAcceptedTasks";
 import MyAddedJobs from "../pages/MyAddedJobs/MyAddedJobs";
 import MyUpdatedJob from "../pages/MyUpdatedJob/MyUpdatedJob";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound></NotFound>,
   },
 ]);
 export default router;
