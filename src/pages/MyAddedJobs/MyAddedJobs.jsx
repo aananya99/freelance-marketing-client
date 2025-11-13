@@ -66,36 +66,7 @@ const MyAddedJobs = () => {
         My <span className="text-[#AD49E1]">Added jobs:</span>{" "}
         {addedJobs.length}{" "}
       </h2>
-      {/* <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5 my-10">
-        {addedJobs.map((job) => (
-          <div
-            key={job._id}
-            className="card bg-base-100 image-full w-full shadow-sm "
-          >
-            <figure>
-              <img src={job.coverImage} />
-            </figure>
-            <div className="card-body py-12">
-              <h2 className="text-2xl font-bold text-white">{job.title}</h2>
-              <p className="text-white text-xl font-semibold">
-                {" "}
-                Category: {job.category}
-              </p>
-              <div className="card-actions justify-between">
-                <Link to={`/updateJob/${job._id}`}>
-                  <button className="btn  bg-[#7A1CAC] hover:bg-[#AD49E1] text-white">Update </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(job._id)}
-                  className="btn bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
-                >
-                  Delete{" "}
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div> */}
+
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-[#EBD3F8] ">
         <table className="table my-10 ">
           <thead>
@@ -104,8 +75,7 @@ const MyAddedJobs = () => {
               <th className="text-xl text-[#7A1CAC] italic underline">Category</th>
               <th className="text-xl text-[#7A1CAC]  italic underline">Job Title
               </th>
-              {/* <th>Update</th>
-        <th>Delete</th> */}
+              <th>Posted By:</th>
             </tr>
           </thead>
           <tbody>

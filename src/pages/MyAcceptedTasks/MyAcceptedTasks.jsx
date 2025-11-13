@@ -62,38 +62,40 @@ const MyAcceptedTasks = () => {
         My <span className="text-[#AD49E1]">Accepted Tasks:</span>{" "}
         {addedJobs.length}{" "}
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5 my-10">
-        {addedJobs.map((job) => (
-          <div
-            key={job._id}
-            className="card bg-base-100 image-full w-full shadow-sm "
-          >
-            <figure>
-              <img src={job.coverImage} />
-            </figure>
-            <div className="card-body py-12">
-              <h2 className="text-2xl font-bold text-white">{job.title}</h2>
-              <p className="text-white text-xl font-semibold">
-                {" "}
-                Category: {job.category}
-              </p>
-              <div className="card-actions justify-between">
-                <Link to={`/updateJob/${job._id}`}>
-                  <button className="btn  bg-[#7A1CAC] hover:bg-[#AD49E1] text-white">
-                    Update{" "}
-                  </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(job._id)}
-                  className="btn bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+              <table className="table my-10 bg-[#EBD3F8]">
+                <thead>
+                  <tr>
+                    <th className="text-black">#</th>
+                    <th className="text-xl text-[#7A1CAC] italic underline">Category</th>
+                    <th className="text-xl text-[#7A1CAC]  italic underline">Job Title
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {addedJobs.map((job, index) => (
+                    <tr key={job._id}>
+                      <th className="text-black">{index + 1}</th>
+                      <td className="text-[#7A1CAC] font-semibold">{job.category}</td>
+                      <td className="text-[#7A1CAC] font-semibold">{job.title}</td>
+                      <td>
+                        {" "}
+                        <Link to={`/updateJob/${job._id}`}>
+                          <button className="btn  bg-[#7A1CAC] hover:bg-[#AD49E1] text-white">
+                            Update{" "}
+                          </button>
+                        </Link>
+                      </td>
+                      <td><button
+                        onClick={() => handleDelete(job._id)}
+                        className="btn bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
+                      >
+                        Delete{" "}
+                      </button></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
     </div>
   );
 };
