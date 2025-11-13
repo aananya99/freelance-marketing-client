@@ -8,12 +8,12 @@ import useAxios from "../../hooks/useAxios";
 import Loading from "../../components/Loading";
 
 const MyAddedJobs = () => {
-  const { user} = useAuth();
+  const { user } = useAuth();
   const [addedJobs, setAddedJobs] = useState([]);
   const navigate = useNavigate();
   const axiosInstance = useAxios();
 
-// axiosInstance
+  // axiosInstance
   useEffect(() => {
     if (!user?.email) return;
     axiosInstance
@@ -23,7 +23,6 @@ const MyAddedJobs = () => {
       })
       .catch((err) => console.log(err));
   }, [user?.email, axiosInstance]);
-
 
   if (addedJobs.length === 0) {
     return (
@@ -63,10 +62,11 @@ const MyAddedJobs = () => {
 
   return (
     <div className="w-11/12 mx-auto my-10">
-      <h2 className="text-3xl font-bold text-center">
-        My <span className="text-[#AD49E1]">Added jobs:</span> {addedJobs.length}{" "}
+      <h2 className="text-3xl font-bold text-center mb-10">
+        My <span className="text-[#AD49E1]">Added jobs:</span>{" "}
+        {addedJobs.length}{" "}
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5 my-10">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5 my-10">
         {addedJobs.map((job) => (
           <div
             key={job._id}
@@ -95,6 +95,43 @@ const MyAddedJobs = () => {
             </div>
           </div>
         ))}
+      </div> */}
+      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-[#EBD3F8] ">
+        <table className="table my-10 ">
+          <thead>
+            <tr>
+              <th className="text-black">#</th>
+              <th className="text-xl text-[#7A1CAC] italic underline">Category</th>
+              <th className="text-xl text-[#7A1CAC]  italic underline">Job Title
+              </th>
+              {/* <th>Update</th>
+        <th>Delete</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {addedJobs.map((job, index) => (
+              <tr key={job._id}>
+                <th className="text-black">{index + 1}</th>
+                <td className="text-[#7A1CAC] font-semibold">{job.category}</td>
+                <td className="text-[#7A1CAC] font-semibold">{job.title}</td>
+                <td>
+                  {" "}
+                  <Link to={`/updateJob/${job._id}`}>
+                    <button className="btn  bg-[#7A1CAC] hover:bg-[#AD49E1] text-white">
+                      Update{" "}
+                    </button>
+                  </Link>
+                </td>
+                <td><button
+                  onClick={() => handleDelete(job._id)}
+                  className="btn bg-[#7A1CAC] hover:bg-[#AD49E1] text-white"
+                >
+                  Delete{" "}
+                </button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

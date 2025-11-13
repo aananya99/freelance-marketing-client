@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 const AllJobs = () => {
   const data = useLoaderData();
 
+
   return (
     <div className="w-11/12 mx-auto my-10">
       <div>
